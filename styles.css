@@ -260,6 +260,15 @@
 
 /* ---------- Configurações: ícones enviados ---------- */
 
+.fs-custom-setting {
+	flex-wrap: wrap;
+}
+
+.fs-custom-setting .fs-custom-list {
+	flex: 1 0 100%;
+	padding-top: var(--size-4-2);
+}
+
 .fs-custom-list {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));

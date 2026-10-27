@@ -2,7 +2,7 @@
  * Janela "Edit style": cores do ícone, do nome e do fundo, negrito, itálico
  * e tamanho, com uma prévia da linha. Cada mudança é aplicada na hora.
  */
-import { App, Modal, Setting, setIcon, setTooltip } from "obsidian";
+import { App, Modal, Setting, setIcon } from "obsidian";
 import { PRESET_COLORS, colorName, colorToCss, isHexColor } from "./colors";
 import { backgroundCss } from "./css";
 import { drawIcon } from "./explorer";
@@ -132,20 +132,17 @@ export class StyleModal extends Modal {
 
 		const none = row.createEl("button", { cls: "fs-swatch is-none", attr: { "aria-label": "None" } });
 		setIcon(none, "ban");
-		setTooltip(none, "None");
 		none.addEventListener("click", () => pick(undefined));
 		swatches.set("", none);
 
 		for (const color of PRESET_COLORS) {
 			const swatch = row.createEl("button", { cls: "fs-swatch", attr: { "aria-label": color.name } });
 			swatch.setCssProps({ "--fs-swatch": color.css });
-			setTooltip(swatch, color.name);
 			swatch.addEventListener("click", () => pick(color.id));
 			swatches.set(color.id, swatch);
 		}
 
-		const custom = row.createEl("label", { cls: "fs-swatch is-custom" });
-		setTooltip(custom, "Custom color");
+		const custom = row.createEl("label", { cls: "fs-swatch is-custom", attr: { "aria-label": "Custom color" } });
 		const input = custom.createEl("input", { attr: { type: "color", "aria-label": "Custom color" } });
 		input.addEventListener("change", () => pick(input.value));
 		setIcon(custom.createSpan({ cls: "fs-swatch-plus" }), "plus");

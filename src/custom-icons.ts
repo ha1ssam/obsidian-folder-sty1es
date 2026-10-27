@@ -104,12 +104,9 @@ export class CustomIcons {
 }
 
 /** Abre o seletor de arquivos do sistema. Resolve com [] se o usuário cancelar. */
-export function chooseFiles(doc: Document): Promise<File[]> {
+export function chooseFiles(): Promise<File[]> {
 	return new Promise((resolve) => {
-		const input = doc.createElement("input");
-		input.type = "file";
-		input.accept = ACCEPT;
-		input.multiple = true;
+		const input = createEl("input", { type: "file", attr: { accept: ACCEPT, multiple: "" } });
 		input.addEventListener("change", () => resolve(Array.from(input.files ?? [])));
 		input.addEventListener("cancel", () => resolve([]));
 		input.click();

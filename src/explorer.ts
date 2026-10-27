@@ -119,9 +119,7 @@ export class ExplorerDecorator {
 			return;
 		}
 		if (!icon) {
-			icon = title.ownerDocument.createElement("span");
-			icon.className = "fs-icon";
-			icon.setAttribute("aria-hidden", "true");
+			icon = createSpan({ cls: "fs-icon", attr: { "aria-hidden": "true" } });
 			title.insertBefore(icon, title.querySelector(CONTENT_SELECTOR));
 		}
 		drawIcon(icon, key, kindOf(path, folder), this.plugin);

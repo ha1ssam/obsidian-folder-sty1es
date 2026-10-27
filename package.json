@@ -1,6 +1,6 @@
 {
 	"name": "folder-sty1es",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Icons and styles for folders and files in the Obsidian file explorer.",
 	"main": "main.js",
 	"type": "module",
