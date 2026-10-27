@@ -53,6 +53,12 @@
 
 /* ---------- Janelas ---------- */
 
+/*
+ * Os seletores começam por .fs-modal e pelo contêiner para vencer a regra
+ * do Obsidian para botões (button:not(.clickable-icon) e .mobile-tap), que
+ * pinta o fundo de todo botão.
+ */
+
 .fs-modal .modal-content {
 	display: flex;
 	flex-direction: column;
@@ -67,14 +73,19 @@
 	background-color: var(--background-modifier-hover);
 }
 
-.fs-tab {
+.fs-modal .fs-tabs .fs-tab {
 	flex: 1;
 	box-shadow: none;
 	background: transparent;
 	color: var(--text-muted);
 }
 
-.fs-tab.is-active {
+.fs-modal .fs-tabs .fs-tab:hover {
+	background-color: var(--background-modifier-hover);
+	box-shadow: none;
+}
+
+.fs-modal .fs-tabs .fs-tab.is-active {
 	background-color: var(--background-primary);
 	color: var(--text-normal);
 	box-shadow: var(--shadow-xs, 0 1px 2px rgba(0, 0, 0, 0.1));
@@ -93,7 +104,7 @@
 	padding: 2px;
 }
 
-.fs-tile {
+.fs-modal .fs-icon-grid .fs-tile {
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -107,28 +118,29 @@
 	--icon-size: 20px;
 }
 
-.fs-tile:hover {
+.fs-modal .fs-icon-grid .fs-tile:hover {
 	background-color: var(--background-modifier-hover);
+	box-shadow: none;
 }
 
-.fs-tile.is-selected {
+.fs-modal .fs-icon-grid .fs-tile.is-selected {
 	outline: 2px solid var(--interactive-accent);
 	outline-offset: -2px;
 	color: var(--text-accent);
 }
 
-.fs-tile svg {
+.fs-modal .fs-icon-grid .fs-tile svg {
 	width: 20px;
 	height: 20px;
 }
 
-.fs-tile img {
+.fs-modal .fs-icon-grid .fs-tile img {
 	width: 60%;
 	height: 60%;
 	object-fit: contain;
 }
 
-.fs-tile.is-upload {
+.fs-modal .fs-icon-grid .fs-tile.is-upload {
 	border: 1px dashed var(--background-modifier-border-hover);
 	background-color: transparent;
 	color: var(--text-muted);
@@ -193,9 +205,8 @@
 	gap: var(--size-4-2);
 }
 
-.fs-color-setting .setting-item-control {
+.fs-color-setting .fs-swatches {
 	flex: 1 0 100%;
-	justify-content: flex-start;
 }
 
 .fs-swatches {
@@ -204,7 +215,7 @@
 	gap: var(--size-4-2);
 }
 
-.fs-swatch {
+.fs-modal .fs-swatches .fs-swatch {
 	position: relative;
 	display: flex;
 	align-items: center;
@@ -221,30 +232,30 @@
 	--icon-size: 14px;
 }
 
-.fs-swatch:hover {
+.fs-modal .fs-swatches .fs-swatch:hover {
 	background-color: var(--fs-swatch, var(--background-modifier-hover));
 	transform: scale(1.08);
 }
 
-.fs-swatch.is-selected {
+.fs-modal .fs-swatches .fs-swatch.is-selected {
 	box-shadow:
 		0 0 0 2px var(--background-primary),
 		0 0 0 4px var(--interactive-accent);
 }
 
-.fs-swatch.is-custom {
+.fs-modal .fs-swatches .fs-swatch.is-custom {
 	border-style: dashed;
 }
 
-.fs-swatch.is-custom.is-selected {
+.fs-modal .fs-swatches .fs-swatch.is-custom.is-selected {
 	border-style: solid;
 }
 
-.fs-swatch.is-custom.is-selected .fs-swatch-plus {
+.fs-modal .fs-swatches .fs-swatch.is-custom.is-selected .fs-swatch-plus {
 	display: none;
 }
 
-.fs-swatch.is-custom input {
+.fs-modal .fs-swatches .fs-swatch.is-custom input {
 	position: absolute;
 	inset: 0;
 	width: 100%;

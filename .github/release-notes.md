@@ -1,3 +1,5 @@
 ## Fixed
 
-- Fixes the issues found by Obsidian's automated plugin review: no APIs newer than the declared minimum app version, Obsidian's element helpers instead of `document.createElement`, and settings that show up in Obsidian's settings search (1.13+).
+- **Edit style**: the color circles now show their colors right away, instead of only on hover, and stay round on phones.
+- **Background color**: now stays visible on the item you just tapped or hovered, on the open note and on selected items, where it turns a little stronger.
+- **Change icon**: the tabs and icon tiles have the intended colors.
