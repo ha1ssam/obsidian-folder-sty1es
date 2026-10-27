@@ -1,0 +1,301 @@
+/*
+ * Folder Sty1es
+ *
+ * Aqui ficam só a forma dos ícones e das janelas. Cores e estilos de cada
+ * item vêm de uma folha gerada pelo plugin (src/css.ts), a partir das
+ * configurações.
+ */
+
+/* ---------- Ícones no explorador ---------- */
+
+.fs-icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex: 0 0 auto;
+	align-self: center;
+	width: var(--icon-s, 16px);
+	height: var(--icon-s, 16px);
+	margin-inline-end: var(--size-4-1, 4px);
+	color: var(--icon-color);
+	--icon-size: var(--icon-s, 16px);
+	--icon-stroke: var(--icon-s-stroke-width, 2px);
+}
+
+.fs-icon > span {
+	display: flex;
+	width: 100%;
+	height: 100%;
+}
+
+.fs-icon svg {
+	width: 100%;
+	height: 100%;
+}
+
+.fs-icon img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	border-radius: 3px;
+}
+
+/* Pasta automática: ícone aberto ou fechado conforme o estado da pasta. */
+.nav-folder.is-collapsed > .nav-folder-title .fs-icon > .fs-open,
+.nav-folder:not(.is-collapsed) > .nav-folder-title .fs-icon > .fs-closed {
+	display: none;
+}
+
+.nav-file-title,
+.nav-folder-title {
+	transition: background-color 120ms ease;
+}
+
+/* ---------- Janelas ---------- */
+
+.fs-modal .modal-content {
+	display: flex;
+	flex-direction: column;
+	gap: var(--size-4-3);
+}
+
+.fs-tabs {
+	display: flex;
+	gap: var(--size-4-1);
+	padding: var(--size-2-1);
+	border-radius: var(--radius-m);
+	background-color: var(--background-modifier-hover);
+}
+
+.fs-tab {
+	flex: 1;
+	box-shadow: none;
+	background: transparent;
+	color: var(--text-muted);
+}
+
+.fs-tab.is-active {
+	background-color: var(--background-primary);
+	color: var(--text-normal);
+	box-shadow: var(--shadow-xs, 0 1px 2px rgba(0, 0, 0, 0.1));
+}
+
+.fs-search {
+	width: 100%;
+}
+
+.fs-icon-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(44px, 1fr));
+	gap: var(--size-4-1);
+	max-height: min(50vh, 420px);
+	overflow-y: auto;
+	padding: 2px;
+}
+
+.fs-tile {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	aspect-ratio: 1;
+	height: auto;
+	padding: 0;
+	border-radius: var(--radius-m);
+	background-color: var(--background-secondary);
+	box-shadow: none;
+	color: var(--text-normal);
+	--icon-size: 20px;
+}
+
+.fs-tile:hover {
+	background-color: var(--background-modifier-hover);
+}
+
+.fs-tile.is-selected {
+	outline: 2px solid var(--interactive-accent);
+	outline-offset: -2px;
+	color: var(--text-accent);
+}
+
+.fs-tile svg {
+	width: 20px;
+	height: 20px;
+}
+
+.fs-tile img {
+	width: 60%;
+	height: 60%;
+	object-fit: contain;
+}
+
+.fs-tile.is-upload {
+	border: 1px dashed var(--background-modifier-border-hover);
+	background-color: transparent;
+	color: var(--text-muted);
+}
+
+.fs-more {
+	color: var(--text-muted);
+	font-size: var(--font-ui-small);
+	text-align: center;
+}
+
+.fs-more:empty {
+	display: none;
+}
+
+.fs-modal-footer {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+	gap: var(--size-4-2);
+}
+
+/* Prévia da linha na janela de estilo. */
+.fs-preview {
+	display: flex;
+	align-items: center;
+	padding: var(--size-4-2) var(--size-4-3);
+	border: 1px solid var(--background-modifier-border);
+	border-radius: var(--radius-m);
+	background-color: var(--fs-preview-bg, transparent);
+	font-size: var(--nav-item-size, var(--font-ui-small));
+	color: var(--nav-item-color, var(--text-muted));
+}
+
+.fs-preview .fs-icon {
+	color: var(--fs-preview-icon, var(--icon-color));
+}
+
+.fs-preview-name {
+	color: var(--fs-preview-text, inherit);
+}
+
+.fs-preview.is-bold .fs-preview-name {
+	font-weight: var(--font-semibold, 600);
+}
+
+.fs-preview.is-italic .fs-preview-name {
+	font-style: italic;
+}
+
+.fs-preview.is-small {
+	font-size: calc(var(--nav-item-size, var(--font-ui-small)) * 0.9);
+}
+
+.fs-preview.is-large {
+	font-size: calc(var(--nav-item-size, var(--font-ui-small)) * 1.15);
+}
+
+/* Linha de cores: nome em cima, bolinhas embaixo. */
+.fs-color-setting {
+	flex-wrap: wrap;
+	gap: var(--size-4-2);
+}
+
+.fs-color-setting .setting-item-control {
+	flex: 1 0 100%;
+	justify-content: flex-start;
+}
+
+.fs-swatches {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--size-4-2);
+}
+
+.fs-swatch {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 26px;
+	height: 26px;
+	padding: 0;
+	border: 1px solid var(--background-modifier-border);
+	border-radius: 50%;
+	background-color: var(--fs-swatch, transparent);
+	box-shadow: none;
+	cursor: pointer;
+	color: var(--text-muted);
+	--icon-size: 14px;
+}
+
+.fs-swatch:hover {
+	background-color: var(--fs-swatch, var(--background-modifier-hover));
+	transform: scale(1.08);
+}
+
+.fs-swatch.is-selected {
+	box-shadow:
+		0 0 0 2px var(--background-primary),
+		0 0 0 4px var(--interactive-accent);
+}
+
+.fs-swatch.is-custom {
+	border-style: dashed;
+}
+
+.fs-swatch.is-custom.is-selected {
+	border-style: solid;
+}
+
+.fs-swatch.is-custom.is-selected .fs-swatch-plus {
+	display: none;
+}
+
+.fs-swatch.is-custom input {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	cursor: pointer;
+}
+
+.fs-swatch-plus {
+	display: flex;
+	pointer-events: none;
+}
+
+/* ---------- Configurações: ícones enviados ---------- */
+
+.fs-custom-list {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+	gap: var(--size-4-2);
+	padding-bottom: var(--size-4-4);
+}
+
+.fs-custom-card {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: var(--size-4-1);
+	padding: var(--size-4-3) var(--size-4-2) var(--size-4-2);
+	border: 1px solid var(--background-modifier-border);
+	border-radius: var(--radius-m);
+}
+
+.fs-custom-card img {
+	width: 32px;
+	height: 32px;
+	object-fit: contain;
+}
+
+.fs-custom-name {
+	max-width: 100%;
+	overflow: hidden;
+	color: var(--text-muted);
+	font-size: var(--font-ui-smaller);
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.fs-custom-remove {
+	position: absolute;
+	top: 2px;
+	right: 2px;
+	padding: 2px;
+}

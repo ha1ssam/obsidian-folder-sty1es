@@ -1,0 +1,9 @@
+{
+	"id": "folder-styles",
+	"name": "Folder Sty1es",
+	"version": "1.0.0",
+	"minAppVersion": "1.4.0",
+	"description": "Icons for every folder and file in the file explorer, plus colors and text styles you pick from the right-click menu.",
+	"author": "Haissam Makki",
+	"isDesktopOnly": false
+}
