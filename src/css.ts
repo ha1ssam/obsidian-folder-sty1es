@@ -28,8 +28,8 @@ const SIZES = {
 };
 
 /** Mistura a cor com transparência, para o fundo não brigar com o texto. */
-export const backgroundCss = (color: string): string =>
-	`color-mix(in srgb, ${colorToCss(color)} 18%, transparent)`;
+export const backgroundCss = (color: string, amount = 18): string =>
+	`color-mix(in srgb, ${colorToCss(color)} ${amount}%, transparent)`;
 
 function styleRules(selector: string, style: ItemStyle): string[] {
 	const rules: string[] = [];
@@ -41,12 +41,15 @@ function styleRules(selector: string, style: ItemStyle): string[] {
 	if (style.size) rules.push(`${selector} { font-size: ${SIZES[style.size]}; }`);
 	if (style.iconColor) rules.push(`${selector} .fs-icon { color: ${colorToCss(style.iconColor)}; }`);
 	if (style.background) {
-		// Sem fundo próprio ao passar o mouse ou no item aberto: o destaque do tema aparece.
+		// O fundo fica sempre visível (no celular o último item tocado continua em
+		// :hover). Ao passar o mouse, no item aberto e nos selecionados a mesma cor
+		// fica mais forte, para o destaque continuar aparecendo.
+		rules.push(`${selector} { background-color: ${backgroundCss(style.background)}; }`);
 		rules.push(
-			`${selector}:not(:hover):not(.is-active) { background-color: ${backgroundCss(style.background)}; }`
+			`${selector}:is(:hover, .is-active, .is-selected, .mobile-tap) { background-color: ${backgroundCss(style.background, 32)}; }`
 		);
 	}
-	return rules;
+		return rules;
 }
 
 const depth = (path: string): number => path.split("/").length;

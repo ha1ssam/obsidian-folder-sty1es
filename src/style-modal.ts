@@ -122,7 +122,8 @@ export class StyleModal extends Modal {
 	private colorSetting(name: string, field: ColorField): void {
 		const setting = new Setting(this.contentEl).setName(name);
 		setting.settingEl.addClass("fs-color-setting");
-		const row = setting.controlEl.createDiv({ cls: "fs-swatches" });
+		// Fora do setting-item-control: no celular o Obsidian estica todo botão de lá.
+		const row = setting.settingEl.createDiv({ cls: "fs-swatches" });
 		const swatches = new Map<string, HTMLElement>();
 
 		const pick = (value: string | undefined) => {
