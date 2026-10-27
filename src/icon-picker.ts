@@ -3,7 +3,7 @@
  * ícones enviados pelo usuário e as opções de voltar ao automático ou tirar
  * o ícone.
  */
-import { App, Modal, Notice, getIconIds, setIcon, setTooltip } from "obsidian";
+import { App, Modal, Notice, getIconIds, setIcon } from "obsidian";
 import { UploadError, chooseFiles, iconLabel } from "./custom-icons";
 import type FolderStylesPlugin from "./main";
 import { CUSTOM_PREFIX, NO_ICON } from "./settings-data";
@@ -98,7 +98,6 @@ export class IconPickerModal extends Modal {
 
 		const footer = contentEl.createDiv({ cls: "fs-modal-footer" });
 		const auto = footer.createEl("button", { text: "Automatic icon" });
-		setTooltip(auto, "Use the icon picked from the item's type");
 		auto.addEventListener("click", () => this.choose(undefined));
 		footer.createEl("button", { text: "No icon" }).addEventListener("click", () => this.choose(NO_ICON));
 
@@ -161,7 +160,6 @@ export class IconPickerModal extends Modal {
 			attr: { "aria-label": "Upload icon" },
 		});
 		setIcon(upload, "upload");
-		setTooltip(upload, "Upload icon");
 		upload.addEventListener("click", () => void this.upload());
 
 		const names = this.plugin.customIcons
@@ -185,13 +183,12 @@ export class IconPickerModal extends Modal {
 			cls: ["fs-tile", ...(selected ? ["is-selected"] : [])],
 			attr: { "data-value": value, "aria-label": label, role: "option", "aria-selected": String(selected) },
 		});
-		setTooltip(tile, label);
 		tile.addEventListener("click", () => this.choose(value));
 		return tile;
 	}
 
 	private async upload(): Promise<void> {
-		const files = await chooseFiles(this.contentEl.ownerDocument);
+		const files = await chooseFiles();
 		if (!files.length) return;
 		const added = await uploadIcons(this.plugin, files);
 		// Um ícone só: já escolhe. Vários: mostra a aba para o usuário escolher.

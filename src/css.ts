@@ -86,7 +86,7 @@ export class DynamicStyles {
 	private sheets = new Map<Document, CSSStyleSheet>();
 
 	attach(doc: Document): void {
-		const win = doc.defaultView as (Window & typeof globalThis) | null;
+		const win = doc.defaultView;
 		if (!win || this.sheets.has(doc)) return;
 		const sheet = new win.CSSStyleSheet();
 		sheet.replaceSync(this.css);
