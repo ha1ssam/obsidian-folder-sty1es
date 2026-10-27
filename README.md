@@ -1,3 +1,5 @@
+![Folder Sty1es: icons and styles for every folder and file in Obsidian](./assets/banner.png)
+
 # Folder Sty1es
 
 Icons and styles for the folders and files in Obsidian's file explorer. Every item gets an icon based on its type, colored by type. Right-click any folder or file to pick another icon (from Obsidian's icon set or one you upload) or to change its colors and text style.
