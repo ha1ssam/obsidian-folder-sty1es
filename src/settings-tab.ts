@@ -1,4 +1,4 @@
-import { App, PluginSettingTab, Setting, SettingDefinitionItem, setIcon } from "obsidian";
+import { App, ButtonComponent, PluginSettingTab, Setting, SettingDefinitionItem, requireApiVersion, setIcon } from "obsidian";
 import { chooseFiles, iconLabel } from "./custom-icons";
 import { uploadIcons } from "./icon-picker";
 import type FolderStylesPlugin from "./main";
@@ -50,6 +50,12 @@ const CUSTOM = {
 };
 
 const RESET = { heading: "Reset", name: "Clear all icons and styles" };
+
+/** Botão vermelho: setDestructive no Obsidian 1.13+, a classe antiga antes disso. */
+function markDestructive(button: ButtonComponent): void {
+	if (requireApiVersion("1.13.0")) button.setDestructive();
+	else button.buttonEl.addClass("mod-warning");
+}
 
 const isToggleKey = (key: string): key is ToggleKey => TOGGLES.some((toggle) => toggle.key === key);
 
@@ -217,7 +223,8 @@ export class FolderStylesSettingTab extends PluginSettingTab {
 			button.onClick(() => {
 				if (!this.confirmClear) {
 					this.confirmClear = true;
-					button.setButtonText("Click again to confirm").setWarning();
+					button.setButtonText("Click again to confirm");
+					markDestructive(button);
 					return;
 				}
 				void this.plugin.updateSettings({ items: {} }).then(() => this.refresh());
