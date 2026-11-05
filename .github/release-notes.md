@@ -1,5 +1,8 @@
 ## Fixed
 
-- **Edit style**: the color circles now show their colors right away, instead of only on hover, and stay round on phones.
-- **Background color**: now stays visible on the item you just tapped or hovered, on the open note and on selected items, where it turns a little stronger.
-- **Change icon**: the tabs and icon tiles have the intended colors.
+- **Edit style**: the preview of a folder shows one folder icon, instead of the open and the closed icons squeezed side by side.
+- **Settings**: the "Clear all" confirmation button uses Obsidian's destructive button style on Obsidian 1.13 and later.
+
+## Under the hood
+
+- Release files now come with GitHub artifact attestations, so you can verify they were built from this repository.
