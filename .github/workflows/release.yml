@@ -10,6 +10,12 @@ on:
       - main
   workflow_dispatch:
 
+# Uma execução por vez: dois merges seguidos esperam um pelo outro, e a
+# segunda vê que a release já existe em vez de tentar criá-la de novo.
+concurrency:
+  group: release
+  cancel-in-progress: false
+
 permissions:
   contents: write
   id-token: write
