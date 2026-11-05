@@ -1,0 +1,41 @@
+* { box-sizing: border-box; }
+html, body { margin: 0; background: #1b1b1b; }
+body { font-family: "Inter", sans-serif; color: var(--text-normal); -webkit-font-smoothing: antialiased; }
+.slide { position: relative; overflow: hidden; background: #1b1b1b; }
+.slide.portrait { width: 540px; height: 960px; padding: 56px 44px 0; }
+.slide.landscape { width: 900px; height: 600px; padding: 40px 44px; display: grid; grid-template-columns: 262px 1fr; column-gap: 24px; }
+.eyebrow { font-family: "JetBrains Mono", monospace; font-size: 13px; color: var(--accent); margin: 0 0 14px; letter-spacing: .01em; }
+h1 { font-family: "Inter Display", "Inter", sans-serif; font-weight: 700; color: #ececec; margin: 0; letter-spacing: -0.025em; line-height: 1.04; }
+.portrait h1 { font-size: 46px; }
+.landscape h1 { font-size: 36px; }
+.sub { color: #9a9a9a; font-size: 16px; line-height: 1.45; margin: 16px 0 0; }
+.landscape .sub { font-size: 14.5px; }
+.sub b { color: #dcdcdc; font-weight: 600; }
+.brand { display: flex; align-items: center; gap: 12px; font-family: "Inter Display", sans-serif; font-weight: 600; font-size: 24px; color: #ececec; letter-spacing: -0.02em; }
+.brand .logo { width: 44px; height: 40px; flex: none; }
+.brand .one { color: var(--accent); }
+.portrait .brand { position: absolute; left: 44px; bottom: 40px; }
+.landscape .left { display: flex; flex-direction: column; min-height: 0; }
+.landscape .brand { margin-top: auto; font-size: 20px; }
+.landscape .brand .logo { width: 38px; height: 34px; }
+.stage { position: relative; }
+.portrait .stage { margin-top: 36px; }
+.landscape .stage { display: flex; align-items: center; justify-content: center; min-height: 0; }
+.panel { background: #232323; border: 1px solid #2e2e2e; border-radius: 14px; }
+.mono { font-family: "JetBrains Mono", monospace; }
+
+/* Card roxo da primeira imagem */
+.hero { background: var(--accent); border-radius: 18px; padding: 26px; color: #161616; display: flex; gap: 22px; }
+.hero .logo1 { width: 58px; height: 52px; flex: none; }
+.hero .kicker { font-family: "JetBrains Mono", monospace; font-size: 11.5px; }
+.hero .title { font: 700 30px/1.02 "Inter Display", sans-serif; letter-spacing: -0.025em; margin: 6px 0 10px; }
+.hero .text { font-size: 14px; line-height: 1.4; color: #1f1a33; }
+.hero .foot { font-family: "JetBrains Mono", monospace; font-size: 11px; color: #2a2346; }
+.hero .explorer { box-shadow: 0 18px 40px rgba(20, 10, 60, .45), 0 2px 6px rgba(0,0,0,.25); }
+
+/* Painel do explorador */
+.explorer { background: var(--background-secondary); border: 1px solid #333; border-radius: 12px; padding: 8px 6px; }
+.explorer .nav-files-container { padding: 0; }
+
+/* Janelas e menu dentro das imagens */
+.slide .modal { width: 100%; }
