@@ -1,6 +1,7 @@
 # Publica a release quando chega no main uma versão nova do manifest.json.
 # Cria a tag (ex.: 1.1.0) e anexa main.js, manifest.json e styles.css,
-# como o Obsidian exige. Se a release da versão já existe, não faz nada.
+# como o Obsidian exige, com atestação de origem (provenance) desses arquivos.
+# Se a release da versão já existe, não faz nada.
 name: Release
 
 on:
@@ -11,6 +12,9 @@ on:
 
 permissions:
   contents: write
+  id-token: write
+  attestations: write
+  artifact-metadata: write
 
 jobs:
   release:
@@ -37,6 +41,14 @@ jobs:
         run: |
           npm ci
           npm run build
+      - name: Attest release files
+        if: steps.version.outputs.exists != 'true'
+        uses: actions/attest@v4
+        with:
+          subject-path: |
+            main.js
+            manifest.json
+            styles.css
       - name: Create release
         if: steps.version.outputs.exists != 'true'
         env:

@@ -179,6 +179,11 @@
 	color: var(--fs-preview-icon, var(--icon-color));
 }
 
+/* Fora do explorador não há pasta aberta ou fechada: fica só a fechada. */
+.fs-preview .fs-icon > .fs-open {
+	display: none;
+}
+
 .fs-preview-name {
 	color: var(--fs-preview-text, inherit);
 }

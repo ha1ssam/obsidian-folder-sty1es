@@ -56,11 +56,15 @@ export class StyleModal extends Modal {
 
 		new Setting(contentEl).setName("Bold").addToggle((toggle) => {
 			toggle.onChange((value) => this.update({ bold: value }));
-			this.syncers.push(() => toggle.setValue(!!this.style.bold));
+			this.syncers.push(() => {
+				toggle.setValue(!!this.style.bold);
+			});
 		});
 		new Setting(contentEl).setName("Italic").addToggle((toggle) => {
 			toggle.onChange((value) => this.update({ italic: value }));
-			this.syncers.push(() => toggle.setValue(!!this.style.italic));
+			this.syncers.push(() => {
+				toggle.setValue(!!this.style.italic);
+			});
 		});
 		new Setting(contentEl).setName("Text size").addDropdown((dropdown) => {
 			dropdown
@@ -68,7 +72,9 @@ export class StyleModal extends Modal {
 				.onChange((value) =>
 					this.update({ size: value === "normal" ? undefined : (value as TextSize) })
 				);
-			this.syncers.push(() => dropdown.setValue(this.style.size ?? "normal"));
+			this.syncers.push(() => {
+				dropdown.setValue(this.style.size ?? "normal");
+			});
 		});
 
 		new Setting(contentEl)

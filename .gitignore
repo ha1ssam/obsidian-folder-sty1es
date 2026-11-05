@@ -1,3 +1,6 @@
 node_modules/
 main.js
 data.json
+
+# Imagens de divulgação: arquivo compilado
+promo/.cache/
